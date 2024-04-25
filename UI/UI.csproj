@@ -46,25 +46,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABM_Autos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM_Autos.Designer.cs">
+      <DependentUpon>ABM_Autos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM_Personas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM_Personas.Designer.cs">
+      <DependentUpon>ABM_Personas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AsignarAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AsignarAuto.Designer.cs">
+      <DependentUpon>AsignarAuto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="IngresoDatos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IngresoDatos.Designer.cs">
-      <DependentUpon>IngresoDatos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ABM_Autos.resx">
+      <DependentUpon>ABM_Autos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM_Personas.resx">
+      <DependentUpon>ABM_Personas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AsignarAuto.resx">
+      <DependentUpon>AsignarAuto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IngresoDatos.resx">
-      <DependentUpon>IngresoDatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -12,16 +12,15 @@ namespace BLL
         public string Nombre { get; set; }
         public string Apellido { get; set; }
 
-        private Auto unAuto { get; set; }   
         public List<Auto> ListaAutos { get; set; }
 
         public Persona() { }
-        public Persona(string dNI, string nombre, string apellido, List<Auto> listaAutos)
+        public Persona(string dNI, string nombre, string apellido)
         {
             DNI = dNI;
             Nombre = nombre;
             Apellido = apellido;
-            this.ListaAutos = listaAutos;
+            ListaAutos = new List<Auto>(); 
         }
 
         public void Lista_de_autos(List<Auto> lista)
@@ -44,6 +43,16 @@ namespace BLL
                 cantidad++;
             }
             Console.WriteLine($"Cantidad de autos: {cantidad}");
+        }
+
+        public void Agregar_Auto(Auto auto)
+        {
+            ListaAutos.Add(auto);
+        }
+        public override string ToString()
+        {
+            //return base.ToString();
+            return $"Nombre: {this.Nombre}, Apellido: {this.Apellido}, DNI: {this.DNI}";
         }
         ~Persona() { Console.WriteLine("EL objeto fue eliminado"); }
         //public override string ToString()

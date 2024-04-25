@@ -12,25 +12,17 @@ namespace BLL
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string Año { get; set; }
+        //private decimal precio;
+
+        //public decimal Precio
+        //{
+        //    get { return precio; }
+        //    set { precio = value; }
+        //}
+
         public decimal Precio { get; set; }
 
-        private Persona unPersona { get; set; }
-
-        public Persona Persona
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public Persona Persona1
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public Auto() { }
 
         public Auto(string patente, string marca, string modelo, string año, decimal precio)
         {
