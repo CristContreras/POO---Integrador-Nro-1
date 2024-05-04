@@ -41,8 +41,11 @@
             this.btnModificarPersona = new System.Windows.Forms.Button();
             this.btnAgregarPropietario = new System.Windows.Forms.Button();
             this.dgvPersonas = new System.Windows.Forms.DataGridView();
+            this.gBListPersonas = new System.Windows.Forms.GroupBox();
+            this.btnVerLista = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonas)).BeginInit();
+            this.gBListPersonas.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -55,7 +58,7 @@
             this.groupBox1.Controls.Add(this.txtDNI);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox1.Location = new System.Drawing.Point(12, 69);
+            this.groupBox1.Location = new System.Drawing.Point(23, 66);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(359, 180);
             this.groupBox1.TabIndex = 7;
@@ -124,14 +127,15 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(19, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(360, 20);
+            this.label1.Size = new System.Drawing.Size(981, 20);
             this.label1.TabIndex = 8;
-            this.label1.Text = "_______________________________________";
+            this.label1.Text = "_________________________________________________________________________________" +
+    "___________________________";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(126, 9);
+            this.label2.Location = new System.Drawing.Point(419, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(137, 20);
             this.label2.TabIndex = 9;
@@ -139,7 +143,7 @@
             // 
             // btnBorrarPersona
             // 
-            this.btnBorrarPersona.Location = new System.Drawing.Point(283, 271);
+            this.btnBorrarPersona.Location = new System.Drawing.Point(204, 262);
             this.btnBorrarPersona.Name = "btnBorrarPersona";
             this.btnBorrarPersona.Size = new System.Drawing.Size(88, 35);
             this.btnBorrarPersona.TabIndex = 16;
@@ -149,7 +153,7 @@
             // 
             // btnModificarPersona
             // 
-            this.btnModificarPersona.Location = new System.Drawing.Point(149, 271);
+            this.btnModificarPersona.Location = new System.Drawing.Point(110, 262);
             this.btnModificarPersona.Name = "btnModificarPersona";
             this.btnModificarPersona.Size = new System.Drawing.Size(88, 35);
             this.btnModificarPersona.TabIndex = 15;
@@ -159,7 +163,7 @@
             // 
             // btnAgregarPropietario
             // 
-            this.btnAgregarPropietario.Location = new System.Drawing.Point(20, 271);
+            this.btnAgregarPropietario.Location = new System.Drawing.Point(23, 262);
             this.btnAgregarPropietario.Name = "btnAgregarPropietario";
             this.btnAgregarPropietario.Size = new System.Drawing.Size(81, 35);
             this.btnAgregarPropietario.TabIndex = 14;
@@ -170,24 +174,45 @@
             // dgvPersonas
             // 
             this.dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPersonas.Location = new System.Drawing.Point(20, 325);
+            this.dgvPersonas.Location = new System.Drawing.Point(15, 25);
             this.dgvPersonas.Name = "dgvPersonas";
             this.dgvPersonas.RowHeadersWidth = 62;
             this.dgvPersonas.RowTemplate.Height = 28;
-            this.dgvPersonas.Size = new System.Drawing.Size(351, 271);
+            this.dgvPersonas.Size = new System.Drawing.Size(549, 191);
             this.dgvPersonas.TabIndex = 13;
             this.dgvPersonas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonas_CellContentClick);
             this.dgvPersonas.SelectionChanged += new System.EventHandler(this.dgvPersonas_SelectionChanged);
+            // 
+            // gBListPersonas
+            // 
+            this.gBListPersonas.Controls.Add(this.dgvPersonas);
+            this.gBListPersonas.Location = new System.Drawing.Point(408, 66);
+            this.gBListPersonas.Name = "gBListPersonas";
+            this.gBListPersonas.Size = new System.Drawing.Size(585, 231);
+            this.gBListPersonas.TabIndex = 17;
+            this.gBListPersonas.TabStop = false;
+            this.gBListPersonas.Text = "Lista Personas";
+            // 
+            // btnVerLista
+            // 
+            this.btnVerLista.Location = new System.Drawing.Point(298, 262);
+            this.btnVerLista.Name = "btnVerLista";
+            this.btnVerLista.Size = new System.Drawing.Size(88, 35);
+            this.btnVerLista.TabIndex = 18;
+            this.btnVerLista.Text = "Ver lista";
+            this.btnVerLista.UseVisualStyleBackColor = true;
+            this.btnVerLista.Click += new System.EventHandler(this.btnVerLista_Click);
             // 
             // ABM_Personas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 635);
+            this.ClientSize = new System.Drawing.Size(1009, 309);
+            this.Controls.Add(this.btnVerLista);
+            this.Controls.Add(this.gBListPersonas);
             this.Controls.Add(this.btnBorrarPersona);
             this.Controls.Add(this.btnModificarPersona);
             this.Controls.Add(this.btnAgregarPropietario);
-            this.Controls.Add(this.dgvPersonas);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -198,6 +223,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonas)).EndInit();
+            this.gBListPersonas.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +244,7 @@
         private System.Windows.Forms.Button btnModificarPersona;
         private System.Windows.Forms.Button btnAgregarPropietario;
         private System.Windows.Forms.DataGridView dgvPersonas;
+        private System.Windows.Forms.GroupBox gBListPersonas;
+        private System.Windows.Forms.Button btnVerLista;
     }
 }

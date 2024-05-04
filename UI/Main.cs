@@ -301,6 +301,7 @@ namespace UI
                 abmPersonas.unaPersona = unaPersona;
                 abmPersonas.listaPersonas = listaPersonas;
                 abmPersonas.Show();
+                //abmPersonas.limpiarCampos();
                 unaVentanaPersona = 1;
             }
             else

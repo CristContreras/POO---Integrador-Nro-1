@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,10 +16,9 @@ namespace UI
     {
         public Persona unaPersona;
         public List<Persona> listaPersonas = new List<Persona>();
-
         public ABM_Personas()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
         
         private void btnAgregarPropietario_Click(object sender, EventArgs e)
@@ -38,9 +38,10 @@ namespace UI
                 }
                 listaPersonas.Add(unaPersona);
                 mostarLista(listaPersonas, dgvPersonas);
-                MessageBox.Show("Persona Agregado correctamente");
+                MessageBox.Show("Persona agregada correctamente");
                 MessageBox.Show(listaPersonas[0].ToString());
                 limpiarCampos();
+                txtDNI.Select();
 
             }
             else
@@ -53,14 +54,14 @@ namespace UI
         {
             datagrid.DataSource = null;
             datagrid.DataSource = lista;
+            dgvPersonas.ClearSelection();
         }
-
+        bool isEnabled;
         private void ABM_Personas_Load(object sender, EventArgs e)
         {
-            if(listaPersonas.Count != 0)
-            {
-                mostarLista(listaPersonas, dgvPersonas);
-            }
+
+           
+
         }
 
         private void btnModificarPersona_Click(object sender, EventArgs e)
@@ -99,6 +100,8 @@ namespace UI
                 DialogResult respuesta = MessageBox.Show($"¿Esta seguro que desea borrar a la persona: {listaPersonas[pos].DNI}", "Advertencia", MessageBoxButtons.YesNo);
                 if (respuesta == DialogResult.Yes)
                 {
+                    //seguir por aca
+
                     if (dgvPersonas.Rows.Count > 0)
                     {
                         listaPersonas.RemoveAt(pos);
@@ -124,18 +127,18 @@ namespace UI
 
         private void dgvPersonas_SelectionChanged(object sender, EventArgs e)
         {
-            if (listaPersonas.Count > 0)
-            {
-                if (dgvPersonas.Rows.Count > 0)
-                {
-                    int posicionPersona = dgvPersonas.CurrentRow.Index;
-                    txtDNI.Text = listaPersonas[posicionPersona].DNI;
-                    txtNombre.Text = listaPersonas[posicionPersona].Nombre;
-                    txtApellido.Text = listaPersonas[posicionPersona].Apellido;
-                }
-            }
-            
+            //if (listaPersonas.Count > 0)
+            //{
+            //    if (dgvPersonas.Rows.Count > 0)
+            //    {
+            //        int posicionPersona = dgvPersonas.CurrentRow.Index;
+            //        txtDNI.Text = listaPersonas[posicionPersona].DNI;
+            //        txtNombre.Text = listaPersonas[posicionPersona].Nombre;
+            //        txtApellido.Text = listaPersonas[posicionPersona].Apellido;
+            //    }
+            //}
         }
+        
         public void limpiarCampos()
         {
             txtDNI.Clear();
@@ -149,7 +152,16 @@ namespace UI
 
         private void dgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+           
         }
+
+        private void btnVerLista_Click(object sender, EventArgs e)
+        {
+            btnVerLista.Enabled = false;
+            mostarLista(listaPersonas, dgvPersonas);
+            limpiarCampos();
+        }
+
+        
     }
 }
