@@ -176,6 +176,7 @@
             this.dgvPersonas.RowTemplate.Height = 28;
             this.dgvPersonas.Size = new System.Drawing.Size(351, 271);
             this.dgvPersonas.TabIndex = 13;
+            this.dgvPersonas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonas_CellContentClick);
             this.dgvPersonas.SelectionChanged += new System.EventHandler(this.dgvPersonas_SelectionChanged);
             // 
             // ABM_Personas

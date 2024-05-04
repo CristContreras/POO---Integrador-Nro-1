@@ -13,7 +13,6 @@ namespace UI
 {
     public partial class ABM_Personas : Form
     {
-        //private Main formMain;
         public Persona unaPersona;
         public List<Persona> listaPersonas = new List<Persona>();
 
@@ -21,9 +20,7 @@ namespace UI
         {
             InitializeComponent();
         }
-        //Persona unaPersona;
-        //private Persona unaPersona;
-
+        
         private void btnAgregarPropietario_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtDNI.Text))
@@ -50,10 +47,7 @@ namespace UI
             {
                 MessageBox.Show("DNI no puede ser vacío");
                 txtDNI.Focus();
-            }
-            //IngresoDatos f1 = new IngresoDatos(dgvPersonas);
-
-        
+            }       
         }
         public void mostarLista<T>(List<T> lista, DataGridView datagrid)
         {
@@ -63,11 +57,10 @@ namespace UI
 
         private void ABM_Personas_Load(object sender, EventArgs e)
         {
-            //txtDNI.Text = unaPersona.DNI;
-            //    Main m = new Main();
-            //    m.Parent = this;
-            //    m.ShowDialog();
-            
+            if(listaPersonas.Count != 0)
+            {
+                mostarLista(listaPersonas, dgvPersonas);
+            }
         }
 
         private void btnModificarPersona_Click(object sender, EventArgs e)
@@ -96,8 +89,6 @@ namespace UI
                 }
             }
         }
-
-       
 
         private void btnBorrarPersona_Click(object sender, EventArgs e)
         {
@@ -128,11 +119,7 @@ namespace UI
             else
             {
                 MessageBox.Show("No hay personas que eliminar");
-            }
-
-            
-            
-            
+            }    
         }
 
         private void dgvPersonas_SelectionChanged(object sender, EventArgs e)
@@ -158,6 +145,11 @@ namespace UI
         private void ABM_Personas_FormClosing(object sender, FormClosingEventArgs e)
         {
             Main.unaVentanaPersona = 0;
+        }
+
+        private void dgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
