@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,15 @@ namespace BLL
             Precio = precio;
         }
 
+        public override string ToString()
+        {
+            NumberFormatInfo formato = new CultureInfo("es-AR").NumberFormat;
+            formato.CurrencyGroupSeparator = ".";
+            formato.NumberDecimalSeparator = ",";
+            formato.CurrencySymbol = "$";
 
+            return $"Patente{this.Patente}, Precio{this.Precio.ToString("C", formato)}";
+
+        }
     }
 }

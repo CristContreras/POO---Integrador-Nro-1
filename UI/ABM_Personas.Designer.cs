@@ -140,6 +140,7 @@
             this.label2.Size = new System.Drawing.Size(137, 20);
             this.label2.TabIndex = 9;
             this.label2.Text = "ABM PERSONAS";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnBorrarPersona
             // 
@@ -173,13 +174,17 @@
             // 
             // dgvPersonas
             // 
+            this.dgvPersonas.AllowUserToDeleteRows = false;
             this.dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonas.Location = new System.Drawing.Point(15, 25);
             this.dgvPersonas.Name = "dgvPersonas";
+            this.dgvPersonas.ReadOnly = true;
             this.dgvPersonas.RowHeadersWidth = 62;
             this.dgvPersonas.RowTemplate.Height = 28;
             this.dgvPersonas.Size = new System.Drawing.Size(549, 191);
             this.dgvPersonas.TabIndex = 13;
+            this.dgvPersonas.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvPersonas_CellBeginEdit);
+            this.dgvPersonas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonas_CellClick);
             this.dgvPersonas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonas_CellContentClick);
             this.dgvPersonas.SelectionChanged += new System.EventHandler(this.dgvPersonas_SelectionChanged);
             // 

@@ -296,11 +296,13 @@ namespace UI
         {
             if (unaVentanaPersona == 0)
             {
+
                 ABM_Personas abmPersonas = new ABM_Personas();
                 abmPersonas.MdiParent = this;
                 abmPersonas.unaPersona = unaPersona;
                 abmPersonas.listaPersonas = listaPersonas;
                 abmPersonas.Show();
+                
                 //abmPersonas.limpiarCampos();
                 unaVentanaPersona = 1;
             }
@@ -353,6 +355,14 @@ namespace UI
             else if(result ==DialogResult.No)
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach(var persona in listaPersonas)
+            {
+                MessageBox.Show($"Cantidad personas: {persona}");
             }
         }
 

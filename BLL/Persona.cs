@@ -29,10 +29,7 @@ namespace BLL
             {
                 Console.WriteLine($"{item.Patente}");
             }
-            //foreach (var item in p1.ListaAutos)
-            //{
-            //    Console.WriteLine($"{item.Patente}");
-            //}
+           
         }
 
         public void Cantidad_de_Autos(List<Auto> lista)

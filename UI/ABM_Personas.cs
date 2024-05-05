@@ -18,9 +18,10 @@ namespace UI
         public List<Persona> listaPersonas = new List<Persona>();
         public ABM_Personas()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
         }
-        
+
         private void btnAgregarPropietario_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtDNI.Text))
@@ -37,9 +38,9 @@ namespace UI
                     }
                 }
                 listaPersonas.Add(unaPersona);
-                mostarLista(listaPersonas, dgvPersonas);
+                mostrarLista(listaPersonas, dgvPersonas);
                 MessageBox.Show("Persona agregada correctamente");
-                MessageBox.Show(listaPersonas[0].ToString());
+                MessageBox.Show(unaPersona.ToString());
                 limpiarCampos();
                 txtDNI.Select();
 
@@ -50,45 +51,74 @@ namespace UI
                 txtDNI.Focus();
             }       
         }
-        public void mostarLista<T>(List<T> lista, DataGridView datagrid)
+        public void mostrarLista<T>(List<T> lista, DataGridView datagrid)
         {
             datagrid.DataSource = null;
             datagrid.DataSource = lista;
             dgvPersonas.ClearSelection();
         }
-        bool isEnabled;
         private void ABM_Personas_Load(object sender, EventArgs e)
         {
-
-           
+            
 
         }
 
         private void btnModificarPersona_Click(object sender, EventArgs e)
         {
-            int posicionPersona = dgvPersonas.CurrentRow.Index;
+            int pos = dgvPersonas.CurrentCell.RowIndex;
+            //int posicionPersona = dgvPersonas.CurrentRow.Index;
 
-            if (dgvPersonas.SelectedRows.Count > 0)
+            if (pos >= 0)
             {
-                if(txtDNI.Text != listaPersonas[posicionPersona].DNI|| txtApellido.Text != listaPersonas[posicionPersona].Apellido|| txtNombre.Text != listaPersonas[posicionPersona].Nombre)
+                if (txtDNI.Text != listaPersonas[pos].DNI || txtApellido.Text != listaPersonas[pos].Apellido || txtNombre.Text != listaPersonas[pos].Nombre)
                 {
-                    if (txtDNI.Text != listaPersonas[posicionPersona].DNI)
+                    if (txtDNI.Text != listaPersonas[pos].DNI)
                     {
-                        listaPersonas[posicionPersona].DNI = txtDNI.Text;
+                        foreach(var item in listaPersonas)
+                        {
+                            if(item.DNI == txtDNI.Text)
+                            {
+                                MessageBox.Show("Error ya hay otro persona con ese DNI");
+                                return;
+                            }
+                        }
+                        listaPersonas[pos].DNI = txtDNI.Text;
+
                     }
-                    else if (txtApellido.Text != listaPersonas[posicionPersona].Apellido)
+                    else if (txtApellido.Text != listaPersonas[pos].Apellido)
                     {
-                        listaPersonas[posicionPersona].Apellido = txtApellido.Text;
+                        listaPersonas[pos].Apellido = txtApellido.Text;
                     }
-                    else if (txtNombre.Text != listaPersonas[posicionPersona].Nombre)
+                    else if (txtNombre.Text != listaPersonas[pos].Nombre)
                     {
-                        listaPersonas[posicionPersona].Nombre = txtNombre.Text;
+                        listaPersonas[pos].Nombre = txtNombre.Text;
                     }
-                    mostarLista(listaPersonas, dgvPersonas);
-                    MessageBox.Show("Cambio realizado!");
+                    mostrarLista(listaPersonas, dgvPersonas);
+                    MessageBox.Show("¡Cambio realizado!");
                     limpiarCampos();
                 }
             }
+            //if (dgvPersonas.SelectedRows.Count > 0)
+            //{
+            //    if(txtDNI.Text != listaPersonas[posicionPersona].DNI|| txtApellido.Text != listaPersonas[posicionPersona].Apellido|| txtNombre.Text != listaPersonas[posicionPersona].Nombre)
+            //    {
+            //        if (txtDNI.Text != listaPersonas[posicionPersona].DNI)
+            //        {
+            //            listaPersonas[posicionPersona].DNI = txtDNI.Text;
+            //        }
+            //        else if (txtApellido.Text != listaPersonas[posicionPersona].Apellido)
+            //        {
+            //            listaPersonas[posicionPersona].Apellido = txtApellido.Text;
+            //        }
+            //        else if (txtNombre.Text != listaPersonas[posicionPersona].Nombre)
+            //        {
+            //            listaPersonas[posicionPersona].Nombre = txtNombre.Text;
+            //        }
+            //        mostarLista(listaPersonas, dgvPersonas);
+            //        MessageBox.Show("¡Cambio realizado!");
+            //        limpiarCampos();
+            //    }
+            //}
         }
 
         private void btnBorrarPersona_Click(object sender, EventArgs e)
@@ -97,18 +127,18 @@ namespace UI
             {
                 int pos = dgvPersonas.CurrentRow.Index;
 
-                DialogResult respuesta = MessageBox.Show($"¿Esta seguro que desea borrar a la persona: {listaPersonas[pos].DNI}", "Advertencia", MessageBoxButtons.YesNo);
+                DialogResult respuesta = MessageBox.Show($"¿Esta seguro que desea borrar a la persona: {listaPersonas[pos].DNI}", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
                 if (respuesta == DialogResult.Yes)
                 {
-                    //seguir por aca
 
                     if (dgvPersonas.Rows.Count > 0)
                     {
                         listaPersonas.RemoveAt(pos);
-                        MessageBox.Show("Objeto eliminado de la lista");
+                        MessageBox.Show($"Objeto eliminado de la lista.");
                         if (listaPersonas.Count > 0)
                         {
-                            mostarLista(listaPersonas, dgvPersonas);
+                            mostrarLista(listaPersonas, dgvPersonas);
 
                         }
                         else
@@ -137,6 +167,8 @@ namespace UI
             //        txtApellido.Text = listaPersonas[posicionPersona].Apellido;
             //    }
             //}
+          
+
         }
         
         public void limpiarCampos()
@@ -152,16 +184,49 @@ namespace UI
 
         private void dgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            //int i = 0;
+            //if (dgvPersonas.SelectedRows.Count > 0)
+            //{
+            //    i = dgvPersonas.CurrentRow.Index;
+            //    lblIndicePrueba.Text = i.ToString();
+
+            //}
+
+            //MessageBox.Show("Celda seleccionada");
         }
 
         private void btnVerLista_Click(object sender, EventArgs e)
         {
             btnVerLista.Enabled = false;
-            mostarLista(listaPersonas, dgvPersonas);
+            mostrarLista(listaPersonas, dgvPersonas);
             limpiarCampos();
         }
 
-        
+        private void dgvPersonas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //MessageBox.Show("Con cellclick");
+            int fila = e.RowIndex;
+            txtDNI.Text = listaPersonas[fila].DNI;
+            txtNombre.Text = listaPersonas[fila].Nombre;
+            txtApellido.Text = listaPersonas[fila].Apellido;
+
+            //int i = 0;
+            //if (dgvPersonas.SelectedRows.Count > 0)
+            //{
+            //    i = dgvPersonas.CurrentRow.Index;
+            //    lblIndicePrueba.Text = i.ToString();
+
+            //}
+        }
+
+        private void dgvPersonas_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            //MessageBox.Show("Selecionado");
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
