@@ -31,6 +31,8 @@ namespace BLL
             Marca = marca;
             Modelo = modelo;
             Año = año;
+            
+            
             Precio = precio;
         }
 

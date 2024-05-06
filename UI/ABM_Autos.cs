@@ -43,62 +43,40 @@ namespace UI
         {
             if (!string.IsNullOrEmpty(txtPatente.Text))
             {
-                unAuto = new Auto(txtPatente.Text, txtMarca.Text, txtModelo.Text, txtAño.Text, decimal.Parse(txtPrecio.Text));
-
-                foreach (var auto in listaAutos)
+                decimal unDecimal;
+                try
                 {
-                    if (auto.Patente == unAuto.Patente)
+                    unDecimal = decimal.Parse(txtPrecio.Text);
+                    unAuto = new Auto(txtPatente.Text, txtMarca.Text, txtModelo.Text, txtAño.Text, decimal.Parse(txtPrecio.Text));
+                    foreach (var auto in listaAutos)
                     {
-                        MessageBox.Show("El auto ya esta agregado");
+                        if (auto.Patente == unAuto.Patente)
+                        {
+                            MessageBox.Show("El auto ya esta agregado");
 
-                        return;
+                            return;
+                        }
                     }
+                    listaAutos.Add(unAuto);
+                    mostrarLista(listaAutos, dgvAutos);
+                    MessageBox.Show("Auto agregado correctamente");
+                    MessageBox.Show(unAuto.ToString());
+                    limpiarCampos();
+                    txtPatente.Select();
                 }
-                listaAutos.Add(unAuto);
-                mostrarLista(listaAutos, dgvAutos);
-                MessageBox.Show("Auto agregado correctamente");
-                MessageBox.Show(unAuto.ToString());
-                limpiarCampos();
-                txtPatente.Select();
-                
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error debe ingresa solo números en precio");
+                    MessageBox.Show(ex.ToString()) ;
+                    txtPrecio.Clear();
+                    txtPrecio.Select();
+                }
             }
             else
             {
                 MessageBox.Show("Patente no puede ser vacío");
                 txtPatente.Focus();
             }
-
-            
-            
-
-            //if(!string.IsNullOrEmpty(txtPatente.Text))
-            //{
-            //    unAuto = new Auto(txtPatente.Text, txtMarca.Text, txtModelo.Text, txtAño.Text, decimal.Parse(txtPrecio.Text));
-
-            //    foreach (var auto in listaAuto)
-            //    {
-            //        if (auto.Patente == unAuto.Patente)
-            //        {
-            //            MessageBox.Show("El auto ya esta agregado");
-            //            unAuto = null;
-            //            return;
-            //        }
-            //    }
-            //    listaAuto.Add(unAuto);
-            //    mostarLista(listaAuto, dgvAutos);
-            //    dgvAutos.Columns[4].DefaultCellStyle.Format = "#,0.00";
-            //    //dgvAutos.DataSource = null;
-            //    //dgvAutos.DataSource = listaAuto;
-            //    //unaPersona.Agregar_Auto(unAuto);
-
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Patente no puede ser vacio");
-            //    unaPersona = null;
-            //    txtPatente.Focus();
-            //}
         }
         public void mostrarLista<T>(List<T> lista, DataGridView datagrid)
         {
@@ -152,15 +130,15 @@ namespace UI
 
         private void dgvAutos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            NumberFormatInfo formato = new CultureInfo("es-AR").NumberFormat;
-            formato.CurrencyGroupSeparator = ".";
-            formato.NumberDecimalSeparator = ",";
-            formato.CurrencySymbol = "$";
+            //NumberFormatInfo formato = new CultureInfo("es-AR").NumberFormat;
+            //formato.CurrencyGroupSeparator = ".";
+            //formato.NumberDecimalSeparator = ",";
+            //formato.CurrencySymbol = "$";
 
-            if(dgvAutos.Columns[e.ColumnIndex].Name=="Precio" && e.Value is decimal)
-            {
-                //e.Value = decimal.Parse(txtPrecio.Text.ToString("C", formato));
-            }
+            //if(dgvAutos.Columns[e.ColumnIndex].Name=="Precio" && e.Value is decimal)
+            //{
+            //    //e.Value = decimal.Parse(txtPrecio.Text.ToString("C", formato));
+            //}
         }
     }
 }

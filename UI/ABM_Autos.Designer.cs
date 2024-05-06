@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblPrecio = new System.Windows.Forms.Label();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.txtAño = new System.Windows.Forms.TextBox();
             this.lblAño = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblModelo = new System.Windows.Forms.Label();
             this.txtMarca = new System.Windows.Forms.TextBox();
-            this.txtModelo = new System.Windows.Forms.TextBox();
             this.txtPatente = new System.Windows.Forms.TextBox();
             this.lblPatente = new System.Windows.Forms.Label();
+            this.txtModelo = new System.Windows.Forms.TextBox();
             this.btnBorrarAuto = new System.Windows.Forms.Button();
             this.btnModificarAuto = new System.Windows.Forms.Button();
             this.btnAgregarAuto = new System.Windows.Forms.Button();
@@ -44,8 +46,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gBlistaAutos = new System.Windows.Forms.GroupBox();
-            this.lblPrecio = new System.Windows.Forms.Label();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutos)).BeginInit();
             this.gBlistaAutos.SuspendLayout();
@@ -70,6 +70,24 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Auto";
+            // 
+            // lblPrecio
+            // 
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.lblPrecio.Location = new System.Drawing.Point(765, 39);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(53, 20);
+            this.lblPrecio.TabIndex = 16;
+            this.lblPrecio.Text = "Precio";
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.txtPrecio.Location = new System.Drawing.Point(887, 35);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(180, 26);
+            this.txtPrecio.TabIndex = 15;
             // 
             // txtAño
             // 
@@ -118,15 +136,6 @@
             this.txtMarca.Size = new System.Drawing.Size(180, 26);
             this.txtMarca.TabIndex = 8;
             // 
-            // txtModelo
-            // 
-            this.txtModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.txtModelo.Location = new System.Drawing.Point(512, 36);
-            this.txtModelo.Name = "txtModelo";
-            this.txtModelo.Size = new System.Drawing.Size(180, 26);
-            this.txtModelo.TabIndex = 10;
-            this.txtModelo.TextChanged += new System.EventHandler(this.txtModelo_TextChanged);
-            // 
             // txtPatente
             // 
             this.txtPatente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
@@ -144,6 +153,15 @@
             this.lblPatente.Size = new System.Drawing.Size(65, 20);
             this.lblPatente.TabIndex = 7;
             this.lblPatente.Text = "Patente";
+            // 
+            // txtModelo
+            // 
+            this.txtModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.txtModelo.Location = new System.Drawing.Point(512, 36);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(180, 26);
+            this.txtModelo.TabIndex = 10;
+            this.txtModelo.TextChanged += new System.EventHandler(this.txtModelo_TextChanged);
             // 
             // btnBorrarAuto
             // 
@@ -213,25 +231,6 @@
             this.gBlistaAutos.TabIndex = 21;
             this.gBlistaAutos.TabStop = false;
             this.gBlistaAutos.Text = "Lista Autos";
-            // 
-            // lblPrecio
-            // 
-            this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.lblPrecio.Location = new System.Drawing.Point(765, 39);
-            this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(53, 20);
-            this.lblPrecio.TabIndex = 16;
-            this.lblPrecio.Text = "Precio";
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.txtPrecio.Location = new System.Drawing.Point(887, 35);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(180, 26);
-            this.txtPrecio.TabIndex = 15;
-            this.txtPrecio.Text = "0.0";
             // 
             // ABM_Autos
             // 
